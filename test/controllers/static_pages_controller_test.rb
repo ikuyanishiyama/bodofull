@@ -1,14 +1,27 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get home" do
-    get static_pages_home_url
+  
+  def setup
+    @base_title = "ボドフル＊ボードゲーム口コミサイト"
+  end
+  
+  test "rootにアクセス" do
+    get root_url
     assert_response :success
+    assert_select "title", "みんなのオススメ | #{@base_title}"
+  end
+  
+  test "homeにアクセス" do
+    get home_path
+    assert_response :success
+    assert_select "title", "みんなのオススメ | #{@base_title}"
   end
 
-  test "should get about" do
-    get static_pages_about_url
+  test "aboutページにアクセス" do
+    get about_path
     assert_response :success
+    assert_select "title", "ボドフルとは | #{@base_title}"
   end
 
 end
