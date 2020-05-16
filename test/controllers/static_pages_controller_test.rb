@@ -3,7 +3,7 @@ require 'test_helper'
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   
   def setup
-    @base_title = "ボドフル＊ボードゲーム口コミサイト"
+    @base_title = "ボドフル＊ボードゲーム専門SNS"
   end
   
   test "rootにアクセス" do
