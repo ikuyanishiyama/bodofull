@@ -10,6 +10,18 @@
 
   <body>
     <%= render "layouts/header" %>
+
+    <div class="cover">
+      <div class="cover-inner">
+        <div class="cover-contents">
+          <h1>みんなのおすすめボードゲーム</h1>
+            <!--<% unless logged_in? %>-->
+              <!--<%= link_to 'モノリストを始める', signup_path, class: 'btn btn-success btn-lg' %>-->
+            <!--<% end %>-->
+        </div>
+      </div>
+    </div>
+    
     <div class="container">
       <% flash.each do |messages_type, message| %>
         <div class="alert alert-<%= messages_type %>"><%= message %></div>
