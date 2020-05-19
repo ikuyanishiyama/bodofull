@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    # @user.image = "default.jpeg"
     if @user.save
       log_in(@user)
       flash[:success] = "アカウントの登録に成功しました"
@@ -40,9 +41,9 @@ class UsersController < ApplicationController
     
     # ストロングパラメーター
     def user_params
-      # user属性を必須とし、name,email,password属性を許可する
+      # user属性を必須とし、name,email,password,image属性を許可する
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation, :image)
     end
     
     # before アクション

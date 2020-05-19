@@ -19,6 +19,12 @@ class User < ApplicationRecord
   # パスワードのセキュア化
   has_secure_password
   
+  # imageのアップローダーとユーザーを紐付ける
+  mount_uploader :image, ImageUploader
+  
+  # imageのリサイズ
+  validate :image_size
+  
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -47,4 +53,13 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+  
+  private
+  
+    # アップロードされた画像のサイズをバリデーションする
+    def image_size
+      if image.size > 5.megabytes
+        errors.add(:image, "5MBより小さい画像にしてください")
+      end
+    end
 end
