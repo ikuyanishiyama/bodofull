@@ -81,7 +81,7 @@ class UserTest < ActiveSupport::TestCase
   
   # 記憶化ダイジェストが存在しない場合のauthenticated?はfalseを返す
   test "authenticated? should return false for a user with nil digest" do
-    assert_not @user.authenticated?("")
+    assert_not @user.authenticated?(:remember, "")
   end
 end
 
