@@ -6,7 +6,7 @@
         <% if @user.image? %>
           <%= image_tag @user.image.url, class: "user_image" %>
         <% else %>
-          <%= image_tag 'default.jpeg', size: '50x50', class: "user_image" %>
+          <%= image_tag asset_path('default.jpeg', :width =>'50', :height =>'50', :alt => '画像'), class: "user_image" %>
         <% end %>
         <%= @user.name %>
       </h1>
