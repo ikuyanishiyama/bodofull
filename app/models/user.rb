@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Micropostモデルとの紐付け
+  has_many :microposts
+  
+  
   attr_accessor :remember_token, :reset_token
   before_save { self.email = self.email.downcase }
   

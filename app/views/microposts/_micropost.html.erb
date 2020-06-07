@@ -1,0 +1,27 @@
+<li id="micropost-<%= micropost.id %> micropost">
+  <div class="row border-bottom">
+      <% if micropost.user.image? %>
+        <%= image_tag micropost.user.image.url, class: "user_image" %>
+      <% else %>
+        <%= image_tag asset_path('default.jpeg', :width =>'50', :height =>'50', :alt => '画像'), class: "user_image" %>
+      <% end %>
+      <span class="user"><%= micropost.user.name %></span>
+  </div>
+  
+  <div class="row">
+    <span class="content">
+      <%= image_tag micropost.picture.url if micropost.picture? %>
+      <%= simple_format(micropost.content) %>
+    </span>
+
+  </div>
+  
+  <div class="row">
+    <span class="timestamp">
+      <%= time_ago_in_words(micropost.created_at) %> ago.
+      <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete %>
+    <% end %>
+    </span>
+  </div>
+</li>
